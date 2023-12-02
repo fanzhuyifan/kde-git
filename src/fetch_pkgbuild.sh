@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Usage: ./fetch_pkgbuild.sh <package_name>
+# Usage: fetch_pkgbuild.sh <package_name>
 
 # This script is used to fetch the latest PKGBUILD from Arch Linux's
 # git repository. It will use the latest tagged version of the PKGBUILD
