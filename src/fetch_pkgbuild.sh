@@ -5,6 +5,8 @@
 # This script is used to fetch the latest PKGBUILD from Arch Linux's
 # git repository. It will use the latest tagged version of the PKGBUILD
 
+set -e
+
 BRANCH="makepkg"
 
 pkgctl repo clone --protocol https "$1"

@@ -3,6 +3,8 @@
 # Usage: patch_pkgbuild.sh <dir>
 # Patches the PKGBUILD in the directory passed as an argument
 
+set -e
+
 DIR="$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PKG=$(echo "$1" | sed 's:/*$::')
 
