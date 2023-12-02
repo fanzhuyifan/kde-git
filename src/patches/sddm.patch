@@ -1,5 +1,5 @@
 --- PKGBUILD	2023-12-02 12:38:44.993163394 -0800
 +++ PKGBUILD	2023-12-02 12:38:57.966451375 -0800
 @@ -33,1 +33,1 @@
--source=(https://github.com/$pkgname/$pkgname/archive/v$pkgver/$pkgname.tar.gz)
+-source=(https://github.com/$pkgname/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
 +source=(git+https://github.com/$pkgname/$pkgname)
