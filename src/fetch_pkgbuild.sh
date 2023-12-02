@@ -18,17 +18,4 @@ git checkout $(git describe --tags $(git rev-list --tags --max-count=1))
 git branch -D "$BRANCH"
 git checkout -b "$BRANCH"
 
-custom_patch() {
-    if [ "$1" = "dolphin" ]; then
-        # wget 'https://gitlab.archlinux.org/archlinux/packaging/packages/dolphin/-/raw/kde-unstable/plasma-activities.patch' -O plasma-activities.patch
-        cat <<EOF >>PKGBUILD
-prepare() {
-    :
-}
-EOF
-    fi
-}
-
-custom_patch "$1"
-
 cd ..

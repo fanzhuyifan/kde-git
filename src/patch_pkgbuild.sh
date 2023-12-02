@@ -3,6 +3,9 @@
 # Usage: patch_pkgbuild.sh <dir>
 # Patches the PKGBUILD in the directory passed as an argument
 
+DIR="$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PKG=$(echo "$1" | sed 's:/*$::')
+
 patch_version() {
     OLD_VER=$(makepkg --printsrcinfo | grep -P '\tpkgver = ' | sed 's/\tpkgver = //g')
     cat <<EOF >>PKGBUILD
@@ -21,8 +24,16 @@ patch_other() {
     sed -i 's|\$pkgname-\$pkgver|\$pkgname|g' PKGBUILD
 }
 
+patch_custom() {
+    PATCH_FILE="$DIR/patches/$PKG.patch"
+    if [ -f "$PATCH_FILE" ]; then
+        patch -p0 <"$PATCH_FILE"
+    fi
+}
+
 pushd "$1" 1>/dev/null
 
+patch_custom
 patch_version
 patch_sources
 patch_other
