@@ -1,5 +1,6 @@
 !*.sh
 !*.fish
+!*.txt
 
 !patches/
 !patches/*.patch
