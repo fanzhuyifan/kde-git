@@ -21,7 +21,8 @@ This script will build and install all packages passed as arguments in the corre
 The following environment variables can be set to skip certain steps:
 - `SKIP_FETCH`: skip fetching the PKGBUILD
 - `SKIP_PATCH`: skip patching the PKGBUILD
-- `SKIP_BUILD`: skip building the package
+- `SKIP_PREPARE`: skip preparing the package sources
+- `SKIP_BUILD`: skip building and installing the package
 
 # Dependencies:
 - devtools

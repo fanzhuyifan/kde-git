@@ -20,11 +20,11 @@ if [ -z "$SKIP_PATCH" ]; then
     done
 fi
 
-if [ -z "$SKIP_PREPARE"]; then
 # extract sources and prepare build
-for pkg in "$@"; do
-    pushd "$pkg" 1>/dev/null
-    makepkg -of --skipinteg
-    popd 1>/dev/null
-done
+if [ -z "$SKIP_PREPARE"]; then
+    for pkg in "$@"; do
+        pushd "$pkg" 1>/dev/null
+        makepkg -of --skipinteg
+        popd 1>/dev/null
+    done
 fi
