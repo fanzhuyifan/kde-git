@@ -15,16 +15,22 @@ fi
 
 # patch the PKGBUILDs
 if [ -z "$SKIP_PATCH" ]; then
-    for pkg in "$@"; do
-        patch_pkgbuild.sh "$pkg"
-    done
+    parallel -j $(nproc) patch_pkgbuild.sh ::: "$@"
 fi
 
 # extract sources and prepare build
-if [ -z "$SKIP_PREPARE"]; then
+if [ -z "$SKIP_PREPARE" ]; then
     for pkg in "$@"; do
         pushd "$pkg" 1>/dev/null
         makepkg -of --skipinteg
         popd 1>/dev/null
     done
 fi
+
+BUILD_ORDER=$(get_build_order.sh "$@")
+echo "$BUILD_ORDER" | while read -r pkg; do
+    echo "Building $pkg"
+    pushd "$pkg" 1>/dev/null
+    makepkg -sei --noconfirm
+    popd 1>/dev/null
+done

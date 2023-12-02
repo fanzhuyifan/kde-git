@@ -5,6 +5,9 @@
 
 set -e
 
+echo "Patching $1"
+
+BRANCH="makepkg"
 DIR="$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PKG=$(echo "$1" | sed 's:/*$::')
 
@@ -34,6 +37,13 @@ patch_custom() {
 }
 
 pushd "$1" 1>/dev/null
+
+REMOTE_BRANCH=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
+
+git reset --hard 1>/dev/null 2>&1
+git checkout $(git describe --tags $(git rev-list --tags --max-count=1))
+git branch -D "$BRANCH" 1>/dev/null 2>&1 || true
+git checkout -b "$BRANCH" 1>/dev/null 2>&1
 
 patch_custom
 patch_version

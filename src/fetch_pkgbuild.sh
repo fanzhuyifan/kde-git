@@ -16,8 +16,5 @@ REMOTE_BRANCH=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
 git reset --hard 1>/dev/null 2>&1
 git checkout "$REMOTE_BRANCH"
 git pull
-git checkout $(git describe --tags $(git rev-list --tags --max-count=1))
-git branch -D "$BRANCH" 1>/dev/null 2>&1 || true
-git checkout -b "$BRANCH" 1>/dev/null 2>&1
 
 cd ..
