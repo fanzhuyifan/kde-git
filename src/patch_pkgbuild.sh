@@ -7,7 +7,7 @@ set -e
 
 echo "Patching $1"
 
-BRANCH="makepkg"
+BRANCH="_custom"
 DIR="$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PKG=$(echo "$1" | sed 's:/*$::')
 
@@ -38,10 +38,10 @@ patch_custom() {
 
 pushd "$1" 1>/dev/null
 
-REMOTE_BRANCH=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
+REMOTE_BRANCH=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
 
 git reset --hard 1>/dev/null 2>&1
-git checkout $(git describe --tags $(git rev-list --tags --max-count=1))
+git -c advice.detachedHead=false checkout $(git describe --tags $(git rev-list --tags --max-count=1))
 git branch -D "$BRANCH" 1>/dev/null 2>&1 || true
 git checkout -b "$BRANCH" 1>/dev/null 2>&1
 

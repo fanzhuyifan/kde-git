@@ -22,7 +22,7 @@ fi
 if [ -z "$SKIP_PREPARE" ]; then
     for pkg in "$@"; do
         pushd "$pkg" 1>/dev/null
-        makepkg -of --skipinteg
+        makepkg -ofs --skipinteg --noconfirm
         popd 1>/dev/null
     done
 fi
@@ -31,6 +31,6 @@ BUILD_ORDER=$(get_build_order.sh "$@")
 echo "$BUILD_ORDER" | while read -r pkg; do
     echo "Building $pkg"
     pushd "$pkg" 1>/dev/null
-    makepkg -sei --noconfirm
+    makepkg -fsei --noconfirm
     popd 1>/dev/null
 done

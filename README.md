@@ -26,3 +26,4 @@ The following environment variables can be set to skip certain steps:
 
 # Dependencies:
 - devtools
+- parallel
