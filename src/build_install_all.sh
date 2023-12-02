@@ -27,10 +27,12 @@ if [ -z "$SKIP_PREPARE" ]; then
     done
 fi
 
-BUILD_ORDER=$(get_build_order.sh "$@")
-echo "$BUILD_ORDER" | while read -r pkg; do
-    echo "Building $pkg"
-    pushd "$pkg" 1>/dev/null
-    makepkg -fsei --noconfirm
-    popd 1>/dev/null
-done
+if [ -z "$SKIP_BUILD" ]; then
+    BUILD_ORDER=$(get_build_order.sh "$@")
+    echo "$BUILD_ORDER" | while read -r pkg; do
+        echo "Building $pkg"
+        pushd "$pkg" 1>/dev/null
+        makepkg -fsei --noconfirm
+        popd 1>/dev/null
+    done
+fi
