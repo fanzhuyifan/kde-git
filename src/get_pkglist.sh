@@ -6,5 +6,5 @@
 fetch_pkgbuild.sh plasma-meta 1>/dev/null
 fetch_pkgbuild.sh kde-applications-meta 1>/dev/null
 
-get_depends.sh plasma-meta
-get_depends.sh kde-applications-meta
+get_depends.sh plasma-meta | grep -v '\-meta$'
+get_depends.sh kde-applications-meta | grep -v '\-meta$'
