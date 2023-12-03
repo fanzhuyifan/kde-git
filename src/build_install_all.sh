@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Usage: build_install_all.sh <pkg1> <pkg2> <pkg3> ...
 # Builds and install all packages passed as arguments

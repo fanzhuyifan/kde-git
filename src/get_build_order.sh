@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Usage: get_build_order.sh <pkg1> <pkg2> <pkg3> ...
 # Prints the build order for the packages passed as arguments

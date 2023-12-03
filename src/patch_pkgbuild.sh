@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Usage: patch_pkgbuild.sh <dir>
 # Patches the PKGBUILD in the directory passed as an argument

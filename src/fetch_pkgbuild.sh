@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Usage: fetch_pkgbuild.sh <package_name>
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This script prints the list of packages for KDE software
 # that this tool attempts to build.
