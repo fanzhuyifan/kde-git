@@ -22,7 +22,7 @@ EOF
 }
 
 patch_sources() {
-    sed -i 's|https://download\.kde\.org/.*\.tar\.xz{,\.sig}|git+https://github.com/KDE/\${pkgname}|g' PKGBUILD
+    sed -i 's|https://download\.kde\.org/.*\.tar\.xz{,\.sig}|git+https://commits.kde.org/\${pkgname}|g' PKGBUILD
 }
 
 patch_other() {

@@ -1,5 +1,0 @@
---- PKGBUILD	2023-12-02 12:38:44.993163394 -0800
-+++ PKGBUILD	2023-12-02 12:38:57.966451375 -0800
-@@ -25,1 +25,1 @@
--source=(git+https://github.com/KDE/${pkgname})
-+source=(git+https://invent.kde.org/plasma/${pkgname}.git)

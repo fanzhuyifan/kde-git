@@ -1,8 +1,8 @@
 --- PKGBUILD	2023-12-02 12:38:44.993163394 -0800
 +++ PKGBUILD	2023-12-02 12:38:57.966451375 -0800
 @@ -16,1 +16,1 @@
--source=(git+https://github.com/KDE/${pkgname})
-+source=(git+https://github.com/KDE/${pkgname}-kde)
+-source=(git+https://commits.kde.org/${pkgname})
++source=(git+https://commits.kde.org/${pkgname}-kde)
 @@ -23,2 +23,2 @@
  build() {
 -  cmake -B build -S $pkgname-kde-$pkgver \
