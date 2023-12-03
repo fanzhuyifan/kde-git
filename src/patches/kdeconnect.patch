@@ -3,3 +3,11 @@
 @@ -16,1 +16,1 @@
 -source=(git+https://github.com/KDE/${pkgname})
 +source=(git+https://github.com/KDE/${pkgname}-kde)
+@@ -23,2 +23,2 @@
+ build() {
+-  cmake -B build -S $pkgname-kde-$pkgver \
++  cmake -B build -S $pkgname-kde \
+@@ -33,2 +33,2 @@
+ pkgver() {
+-    cd ${srcdir}/${pkgname}
++    cd ${srcdir}/${pkgname}-kde
