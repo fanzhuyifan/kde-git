@@ -2,7 +2,7 @@
 +++ PKGBUILD	2023-12-02 12:38:57.966451375 -0800
 @@ -28,1 +28,1 @@
 -source=(git+https://github.com/KDE/${pkgname})
-+source=(git+https://github.com/KDE/${pkgname}#branch=master)
++source=(git+https://invent.kde.org/plasma/${pkgname}.git)
 @@ -45,3 +45,1 @@
 -
 -  rm "$pkgdir"/usr/share/qlogging-categories6/kde.renamecategories # Conflicts with kdebugsettings
