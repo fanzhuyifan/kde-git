@@ -18,12 +18,19 @@ sudo cp -r src $CHROOT/root/home/$USER
 arch-nspawn $CHROOT/root bash
 ```
 
+## Setting up local repository
+
 If you set up `PKGDEST` in `makepkg.conf` (in the chroot), you can also turn the directory into a local repository by running `repo-add $PKGDEST/<repo-name>.db.tar.gz $PKGDEST/*.pkg.tar.zst`.
 Then, you can add the repository to `/etc/pacman.conf` by adding the following lines before all the other repositories:
 ```
 [<repo-name>]
 SigLevel = Optional TrustAll
 Server = file://<path-to-pkgdest>
+```
+
+**_TIP:_** The old packages can be cleaned by running
+```bash
+paccache -c $PKGDEST -k 1 -r
 ```
 
 ## Common usage
@@ -47,6 +54,9 @@ Build all local packages:
 ```bash
 build_install_all.sh $(cat local_build_order.txt)
 ```
+It is recommended to use the environment variables documented below to perform the build process step by step.
+
+**_TIP:_**
 You can use the environment variable `CMAKE_BUILD_PARALLEL_LEVEL` to control the number of parallel builds.
 
 ## build_install_all.sh
@@ -60,5 +70,5 @@ The following environment variables can be set to skip certain steps:
 
 # Dependencies:
 
-- devtools
-- parallel
+- [devtools](https://archlinux.org/packages/extra/any/devtools/)
+- [parallel](https://archlinux.org/packages/extra/any/parallel/)
