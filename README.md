@@ -2,7 +2,21 @@
 
 This repository contains scripts to build and install KDE packages from source on Arch Linux, by automatically fetching and modifying the official PKGBUILDs.
 
-# Usage
+The packages are versioned as `<arch-version>_<tag>.r<revision>.g<commit>_<yyyymmdd>`.
+Hence, the package versions are always newer than the official packages, and they automatically follow the versioning of the official packages.
+
+**_WARNING:_** Always make backups before updating your system!
+
+# Preparation
+
+## Install dependencies
+
+```bash
+sudo pacman -S devtools parallel
+```
+
+- [devtools](https://archlinux.org/packages/extra/any/devtools/)
+- [parallel](https://archlinux.org/packages/extra/any/parallel/)
 
 ## Setting up chroot
 
@@ -20,7 +34,10 @@ arch-nspawn $CHROOT/root bash
 
 ## Setting up local repository
 
-If you set up `PKGDEST` in `makepkg.conf` (in the chroot), you can also turn the directory into a local repository by running `repo-add $PKGDEST/<repo-name>.db.tar.gz $PKGDEST/*.pkg.tar.zst`.
+If you set up `PKGDEST` in `makepkg.conf` (in the chroot), you can also turn the directory into a local repository by running 
+```bash
+repo-add $PKGDEST/<repo-name>.db.tar.gz $PKGDEST/*.pkg.tar.zst
+```
 Then, you can add the repository to `/etc/pacman.conf` by adding the following lines before all the other repositories:
 ```
 [<repo-name>]
@@ -32,6 +49,8 @@ Server = file://<path-to-pkgdest>
 ```bash
 paccache -c $PKGDEST -k 1 -r
 ```
+
+# Usage
 
 ## Common usage
 
@@ -67,8 +86,3 @@ The following environment variables can be set to skip certain steps:
 - `SKIP_PATCH`: skip patching the PKGBUILD
 - `SKIP_PREPARE`: skip preparing the package sources
 - `SKIP_BUILD`: skip building and installing the package
-
-# Dependencies:
-
-- [devtools](https://archlinux.org/packages/extra/any/devtools/)
-- [parallel](https://archlinux.org/packages/extra/any/parallel/)
