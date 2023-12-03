@@ -2,8 +2,8 @@
 
 This repository contains scripts to build and install KDE packages from source on Arch Linux, by automatically fetching and modifying the official PKGBUILDs.
 
-The packages are versioned as `<arch-version>_<tag>.r<revision>.g<commit>_<yyyymmdd>`.
-Hence, the package versions are always newer than the official packages, and they automatically follow the versioning of the official packages.
+The package names are the same as those in the official repos, and their versions are `<arch-version>_<tag>.r<revision>.g<commit>_<yyyymmdd>`.
+This ensures that the built packages are always newer than the official packages, and they automatically follow the versioning of the official packages.
 
 **_WARNING:_** Always make backups before updating your system!
 
@@ -86,3 +86,10 @@ The following environment variables can be set to skip certain steps:
 - `SKIP_PATCH`: skip patching the PKGBUILD
 - `SKIP_PREPARE`: skip preparing the package sources
 - `SKIP_BUILD`: skip building and installing the package
+
+# Troubleshooting
+
+If a package fails to build, you can manually edit the `PKGBUILD` to try to fix the issue.
+To share your solution, you can add a `<package-name>.patch` file to the `src/patches` directory.
+The patch will be applied after all the standard patches have been applied.
+Pull requests are welcome!
