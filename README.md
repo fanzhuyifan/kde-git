@@ -29,15 +29,20 @@ See all local packages that are available:
 get_local_packages.sh | tee local_packages.txt
 ```
 
+Find the correct order of building the packages:
+```bash
+get_build_order.sh $(cat local_packages.txt) | tee local_build_order.txt
+```
+
 Build all local packages:
 ```bash
-build_install_all.sh $(cat local_packages.txt)
+build_install_all.sh $(cat local_build_order.txt)
 ```
 You can use the environment variable `CMAKE_BUILD_PARALLEL_LEVEL` to control the number of parallel builds.
 
 ## build_install_all.sh
 
-This script will build and install all packages passed as arguments in the correct order.
+This script will build and install all packages passed as arguments in the order they are passed.
 The following environment variables can be set to skip certain steps:
 - `SKIP_FETCH`: skip fetching the PKGBUILD
 - `SKIP_PATCH`: skip patching the PKGBUILD

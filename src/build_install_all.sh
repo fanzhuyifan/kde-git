@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 # Usage: build_install_all.sh <pkg1> <pkg2> <pkg3> ...
-# Builds and install all packages passed as arguments
-# doing so in the correct order
+# Builds and install all packages passed as arguments in order
 
 set -e
 
@@ -28,8 +27,7 @@ if [ -z "$SKIP_PREPARE" ]; then
 fi
 
 if [ -z "$SKIP_BUILD" ]; then
-    BUILD_ORDER=$(get_build_order.sh "$@")
-    echo "$BUILD_ORDER" | while read -r pkg; do
+    for pkg in "$@"; do
         echo "Building $pkg"
         pushd "$pkg" 1>/dev/null
         makepkg -fsei --noconfirm
