@@ -1,0 +1,30 @@
+--- PKGBUILD	2023-12-02 22:43:38.667492697 -0800
++++ PKGBUILD	2023-12-02 22:44:14.417567456 -0800
+@@ -6,2 +6 @@
+-pkgname=(oxygen
+-         oxygen5)
++pkgname=(oxygen)
+@@ -63,23 +61,0 @@
+-package_oxygen5() {
+-  pkgdesc='Qt5 Oxygen style'
+-  depends=(oxygen
+-           gcc-libs
+-           glibc
+-           frameworkintegration5
+-           kcompletion5
+-           kconfig5
+-           kconfigwidgets5
+-           kguiaddons5
+-           ki18n5
+-           kwidgetsaddons5
+-           kwindowsystem5
+-           libxcb
+-           qt5-base
+-           qt5-declarative
+-           qt5-x11extras)
+-  conflicts=('oxygen<5.27.80')
+-  replaces=('oxygen<5.27.80')
+-  groups=()
+-
+-  DESTDIR="$pkgdir" cmake --install build5
+-}
