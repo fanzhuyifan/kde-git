@@ -16,7 +16,7 @@ patch_version() {
     cat <<EOF >>PKGBUILD
 pkgver() {
     cd \${srcdir}/\${pkgname}
-    echo "${OLD_VER}_\$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')_\$(printf '%(%Y%m%d)T')"
+    echo "${OLD_VER}_\$(git describe --long --tags --abbrev=7 --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')_\$(printf '%(%Y%m%d)T')"
 }
 EOF
 }
