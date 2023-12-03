@@ -1,3 +1,7 @@
+# About
+
+This repository contains scripts to build and install KDE packages from source on Arch Linux, by automatically fetching and modifying the official PKGBUILDs.
+
 # Usage
 
 ```bash
@@ -17,6 +21,7 @@ build_install_all.sh $(cat local_packages.txt)
 You can use the environment variable `CMAKE_BUILD_PARALLEL_LEVEL` to control the number of parallel builds.
 
 ## build_install_all.sh
+
 This script will build and install all packages passed as arguments in the correct order.
 The following environment variables can be set to skip certain steps:
 - `SKIP_FETCH`: skip fetching the PKGBUILD
@@ -25,5 +30,6 @@ The following environment variables can be set to skip certain steps:
 - `SKIP_BUILD`: skip building and installing the package
 
 # Dependencies:
+
 - devtools
 - parallel
