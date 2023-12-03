@@ -2,6 +2,6 @@
 +++ PKGBUILD	2023-12-02 12:38:57.966451375 -0800
 @@ -66,3 +66,3 @@
  prepare() {
--  patch -d $pkgname-$pkgver -p1 < plasma-activities.patch
+-  patch -d $pkgname -p1 < plasma-activities.patch
 +  :
  }

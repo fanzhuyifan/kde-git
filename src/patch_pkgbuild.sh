@@ -45,9 +45,9 @@ git -c advice.detachedHead=false checkout $(git describe --tags $(git rev-list -
 git branch -D "$BRANCH" 1>/dev/null 2>&1 || true
 git checkout -b "$BRANCH" 1>/dev/null 2>&1
 
-patch_custom
 patch_version
 patch_sources
 patch_other
+patch_custom
 
 popd 1>/dev/null
