@@ -6,7 +6,8 @@ This repository contains scripts to build and install KDE packages from source o
 
 ## Setting up chroot
 
-You are advised to build the packages in a chroot, and only install them on your system after they have been built successfully.
+Building the packages in a chroot is strongly recommended.
+The packages should be installed at the same time, when all of them have been built successfully.
 ```bash
 source src/prefix.sh
 mkarchroot -C <pacman.conf> -M <makepkg.conf> $CHROOT/root base-devel devtools parallel
@@ -15,6 +16,14 @@ sudo bash -c "echo '$USER ALL=(ALL) NOPASSWD: ALL' >> $CHROOT/root/etc/sudoers"
 arch-nspawn $CHROOT/root bash -c "mkdir -p /home/$USER/build; chown -R $USER:$USER /home/$USER"
 sudo cp -r src $CHROOT/root/home/$USER
 arch-nspawn $CHROOT/root bash
+```
+
+If you set up `PKGDEST` in `makepkg.conf` (in the chroot), you can also turn the directory into a local repository by running `repo-add $PKGDEST/<repo-name>.db.tar.gz $PKGDEST/*.pkg.tar.zst`.
+Then, you can add the repository to `/etc/pacman.conf` by adding the following lines before all the other repositories:
+```
+[<repo-name>]
+SigLevel = Optional TrustAll
+Server = file://<path-to-pkgdest>
 ```
 
 ## Common usage
