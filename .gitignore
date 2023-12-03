@@ -3,6 +3,6 @@
 !**/.gitignore
 
 !src/
-!build/
+!chroot/
 
 !*.md

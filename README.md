@@ -4,8 +4,23 @@ This repository contains scripts to build and install KDE packages from source o
 
 # Usage
 
+## Setting up chroot
+
+You are advised to build the packages in a chroot, and only install them on your system after they have been built successfully.
 ```bash
-cd build
+source src/prefix.sh
+mkarchroot -C <pacman.conf> -M <makepkg.conf> $CHROOT/root base-devel devtools parallel
+arch-nspawn $CHROOT/root useradd $USER
+sudo bash -c "echo '$USER ALL=(ALL) NOPASSWD: ALL' >> $CHROOT/root/etc/sudoers"
+arch-nspawn $CHROOT/root bash -c "mkdir -p /home/$USER/build; chown -R $USER:$USER /home/$USER"
+sudo cp -r src $CHROOT/root/home/$USER
+arch-nspawn $CHROOT/root bash
+```
+
+## Common usage
+
+```bash
+mkdir build; cd build
 source ../src/prefix.sh
 ```
 
