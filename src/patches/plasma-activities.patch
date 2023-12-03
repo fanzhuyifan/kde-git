@@ -3,3 +3,7 @@
 @@ -28,1 +28,1 @@
 -source=(git+https://github.com/KDE/${pkgname})
 +source=(git+https://github.com/KDE/${pkgname}#branch=master)
+@@ -45,3 +45,1 @@
+-
+-  rm "$pkgdir"/usr/share/qlogging-categories6/kde.renamecategories # Conflicts with kdebugsettings
+ }
