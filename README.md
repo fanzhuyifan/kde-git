@@ -32,6 +32,11 @@ sudo cp -r src $CHROOT/root/home/$USER
 arch-nspawn $CHROOT/root bash
 ```
 
+Before you build, make sure the chroot is up to date:
+```bash
+arch-nspawn $CHROOT/root pacman -Syu
+```
+
 ## Setting up local repository
 
 If you set up `PKGDEST` in `makepkg.conf` (in the chroot), you can also turn the directory into a local repository by running 
