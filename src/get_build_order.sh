@@ -2,12 +2,20 @@
 
 # Usage: get_build_order.sh <pkg1> <pkg2> <pkg3> ...
 # Prints the build order for the packages passed as arguments
-# Assumes that the PKGBUILDs for the packages have already been fetched
-# and patched
+# Assumes that the PKGBUILDs are stored in the directory of the package name
+
+get_depends() {
+    pkg="$1"
+    pushd "$pkg" 1>/dev/null
+    makepkg --printsrcinfo | grep -P "\tdepends = " | sed 's/\tdepends = //g' | sort | uniq
+    popd 1>/dev/null
+}
+
+export -f get_depends
 
 print_depend() {
     pkg="$1"
-    DEPENDS=$(get_depends.sh "$pkg")
+    DEPENDS=$(get_depends "$pkg")
     # print the dependencies in the correct order
     for dep in $DEPENDS; do
         echo "$dep $pkg"
