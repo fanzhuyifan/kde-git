@@ -1,0 +1,40 @@
+--- PKGBUILD.bak	2023-12-05 19:02:32.701747465 -0800
++++ PKGBUILD	2023-12-05 19:03:42.263460399 -0800
+@@ -5,2 +5 @@
+-pkgname=(plasma-integration
+-         plasma5-integration)
++pkgname=(plasma-integration)
+@@ -81,33 +79,0 @@
+-package_plasma5-integration() {
+-  pkgdesc='Qt5 Platform Theme integration plugins for the Plasma workspaces'
+-  depends=(gcc-libs
+-           glibc
+-           kcompletion5
+-           kconfig5
+-           kconfigwidgets5
+-           kcoreaddons5
+-           ki18n5
+-           kiconthemes5
+-           kio5
+-           kjobwidgets5
+-           knotifications5
+-           kservice5
+-           kwayland5
+-           kwidgetsaddons5
+-           kwindowsystem5
+-           kxmlgui5
+-           libxcb
+-           libxcursor
+-           qt5-base
+-           qt5-declarative
+-           qt5-quickcontrols2
+-           qt5-wayland
+-           qt5-x11extras
+-           wayland)
+-  conflicts=('plasma-integration<5.27.80')
+-  replaces=('plasma-integration<5.27.80')
+-  groups=()
+-
+-  DESTDIR="$pkgdir" cmake --install build5
+-  rm -r "$pkgdir"/usr/share
+-}
