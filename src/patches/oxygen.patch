@@ -4,7 +4,16 @@
 -pkgname=(oxygen
 -         oxygen5)
 +pkgname=(oxygen)
-@@ -63,23 +61,0 @@
+@@ -38,2 +38 @@
+-source=(git+https://commits.kde.org/${pkgname}
+-        qt-6.7.patch)
++source=(git+https://commits.kde.org/${pkgname})
+@@ -48,4 +48,0 @@
+-
+-prepare() {
+-  patch -d $pkgname -p1 < qt-6.7.patch # Fix build with Qt 6.7
+-}
+@@ -63,24 +61,0 @@
 -package_oxygen5() {
 -  pkgdesc='Qt5 Oxygen style'
 -  depends=(oxygen
@@ -27,4 +36,5 @@
 -  groups=()
 -
 -  DESTDIR="$pkgdir" cmake --install build5
+-  rm -r "$pkgdir"/usr/share/kstyle
 -}
