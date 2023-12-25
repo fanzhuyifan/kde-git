@@ -1,0 +1,11 @@
+--- PKGBUILD	2023-12-25 14:42:02.432698248 -0800
++++ PKGBUILD	2023-12-25 14:42:26.649233213 -0800
+@@ -40,2 +40 @@
+-source=(git+https://commits.kde.org/${pkgname}
+-        qt-6.7.patch)
++source=(git+https://commits.kde.org/${pkgname})
+@@ -49,4 +47,0 @@
+-
+-prepare() {
+-  patch -d $pkgname -p1 < qt-6.7.patch # Fix build with Qt 6.7
+-}
