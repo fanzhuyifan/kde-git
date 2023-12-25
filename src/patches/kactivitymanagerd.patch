@@ -1,0 +1,13 @@
+--- PKGBUILD	2023-12-25 14:19:55.771714168 -0800
++++ PKGBUILD	2023-12-25 14:20:42.608394862 -0800
+@@ -27,3 +27 @@
+-source=(git+https://commits.kde.org/${pkgname}
+-        https://invent.kde.org/plasma/kactivitymanagerd/-/commit/e42bc4cc.patch
+-        https://invent.kde.org/plasma/kactivitymanagerd/-/commit/80ee42ff.patch)
++source=(git+https://commits.kde.org/${pkgname})
+@@ -38,5 +35,0 @@
+-
+-prepare() {
+-  patch -d $pkgname -p1 < e42bc4cc.patch # Fix recent files history
+-  patch -d $pkgname -p1 < 80ee42ff.patch
+-}
