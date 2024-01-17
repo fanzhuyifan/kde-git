@@ -4,17 +4,6 @@
 -pkgname=(plasma-integration
 -         plasma5-integration)
 +pkgname=(plasma-integration)
-@@ -54,3 +54 @@
--source=(git+https://commits.kde.org/${pkgname}
--        https://invent.kde.org/plasma/plasma-integration/-/commit/14f80450.patch
--        qt-6.7.patch)
-+source=(git+https://commits.kde.org/${pkgname})
-@@ -66,5 +66,0 @@
--
--prepare() {
--  patch -d $pkgname -p1 < qt-6.7.patch # Fix build with Qt 6.7
--  patch -d $pkgname -p1 < 14f80450.patch # Fix breakage if breeze QML theme is not installed
--}
 @@ -83,32 +79,0 @@
 -package_plasma5-integration() {
 -  pkgdesc='Qt5 Platform Theme integration plugins for the Plasma workspaces'
